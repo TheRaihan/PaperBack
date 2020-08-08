@@ -5,22 +5,18 @@ const mongoose = require("mongoose");
 const app = express();
 
 // DB config
+// const db = require('./config/keys').MongoURI;
+const db = 'mongodb+srv://TheRaihan:paperback@cluster0.iojlf.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
+mongoose.connect(db, { useNewUrlParser:true, useUnifiedTopology: true })
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.log(err));
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://TheRaihan:<password>@cluster0.iojlf.mongodb.net/<dbname>?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-
 
 app.listen(5000);
