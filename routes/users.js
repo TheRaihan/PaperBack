@@ -15,6 +15,8 @@ router.post('/register', (req,res) => {
 
     let errors = [];
 
+
+
     if( !name || !email || !password || !password2)
         errors.push({msg: "Please fill all fields"});
     
@@ -54,6 +56,7 @@ router.post('/register', (req,res) => {
 
                 // console.log(newUser)
                 // res.send('hello'); 
+                
 
                 //hash password
                 bcrypt.genSalt(10, (err,salt) => 
@@ -74,5 +77,7 @@ router.post('/register', (req,res) => {
         })
     }
 })
+
+
 module.exports = router;
  

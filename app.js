@@ -2,6 +2,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 
+
 const app = express();
 
 // DB config
@@ -22,6 +23,7 @@ app.use(express.urlencoded({extended:false }));
 // app.use 
 
 app.use('/', require('./routes/index'));
+
 app.use('/users', require('./routes/users'));
 
 app.listen(5000);
