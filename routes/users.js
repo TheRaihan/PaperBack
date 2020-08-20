@@ -25,6 +25,9 @@ router.post('/register', (req,res) => {
     
     if( password != password2)
         errors.push({msg: "Password didn't match"});
+ if(email.endsWith("ewubd.edu") != true)
+    
+        errors.push({msg :"Enter your EWU mail"});
 
     if(errors.length > 0)
     {
@@ -90,5 +93,12 @@ router.post('/login',(req,res,next)=>{
         failureFlash: true
     })(req,res,next);
 })
+//logout
+
+router.get('/logout',(req,res,next)=>{
+    req.logout();
+    req.flash('success_msg',"You have successfully logged out");
+    res.redirect('/users/login');
+});
 module.exports = router;
  
