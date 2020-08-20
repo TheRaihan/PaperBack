@@ -6,7 +6,6 @@ const passport = require('passport');
 
 const User = require('../models/User');
 
-
 router.get('/login', (req,res,next) => res.render('login'));
 
 router.get('/register', (req,res,next) => res.render('register'));
@@ -17,14 +16,18 @@ router.post('/register', (req,res) => {
     const {name, email, password, password2} = req.body;
 
     let errors = [];
-
-
-
+    
+    
     if( !name || !email || !password || !password2)
         errors.push({msg: "Please fill all fields"});
     
     if( password != password2)
         errors.push({msg: "Password didn't match"});
+
+    if(email.endsWith("std@ewubd") != true)
+
+        errors.push({msg: "Please use ewu email"});
+
 
     if(errors.length > 0)
     {
@@ -36,6 +39,8 @@ router.post('/register', (req,res) => {
             password2
         })
     }
+
+
     else {
         User.findOne({email: email})
         .then(user => {
@@ -49,6 +54,7 @@ router.post('/register', (req,res) => {
                     password: password,
                     password2: password2
                 });
+
             }
             else {
                 const newUser = new User({
@@ -90,5 +96,19 @@ router.post('/login',(req,res,next)=>{
         failureFlash: true
     })(req,res,next);
 })
+
+//logout
+router.get('/logout', (req,res,next) =>{
+    req.logout();
+    req.flash('success_msg',"You have successfully logged out");
+    res.redirect('/users/login');
+
+  });
+
+
+
+
 module.exports = router;
+
+
  
