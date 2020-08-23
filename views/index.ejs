@@ -15,9 +15,9 @@
 
   <main>
     <% if (prods.length > 0) { %>
-    <div class="row" style="margin-top: 2%;">
+    <div class="row" style="margin: 2%;">
       <% for (let product of prods) { %>
-      <article class="col-3 card m-auto product-item" style="margin-left: 10px;">
+      <article class="col-3 m-auto " style="margin-left: 10px;">
         <header class="card__header" style="text-align: center; margin-top: 3%;">
           <h5 class="product__title" style="text-align: center;"><%= product.title %></h5>
         </header>
@@ -25,12 +25,12 @@
           <img style="width: 100%; display: block;" src="<%= product.imgURL %>" alt="<%= product.title %>">
         </div>
         <div class="card__content">
-          <h4 class="m-auto"><%= product.price %> BDT</h4>
+          <h5 style="text-align: center; padding-top: 5px;"><%= product.price %> BDT</h5>
           <p class="product__description"><%= product.des %></p>
         </div>
         <div class="card__actions">
-          <a href="/products/<%= product.id %> " class="btn"">Details</a>
-                          <button class=" btn">Add to Cart</button>
+          <a href="/products/<%= product.id %> " class="btn btn-outline-info"">Details</a>
+                          <button class=" btn btn-outline-success">Add to Cart</button>
         </div>
       </article>
       <% } %>
