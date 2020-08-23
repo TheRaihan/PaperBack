@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>asd</title>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+  <%- include('./includes/nav.ejs') %>
+
+  <main>
+    <% if (prods.length > 0) { %>
+    <div class="row" style="margin: 2%;">
+      <% for (let product of prods) { %>
+      <article class="col-3 m-auto " style="margin-left: 10px;">
+        <header class="card__header" style="text-align: center; margin-top: 3%;">
+          <h5 class="product__title" style="text-align: center;"><%= product.title %></h5>
+        </header>
+        <div class=" card__image">
+          <img style="width: 100%; display: block;" src="<%= product.imgURL %>" alt="<%= product.title %>">
+        </div>
+        <div class="card__content">
+          <h5 style="text-align: center; padding-top: 5px;"><%= product.price %> BDT</h5>
+          <p class="product__description"><%= product.des %></p>
+        </div>
+        <div class="card__actions">
+          <a href="/products/<%= product.id %> " class="btn btn-outline-info"">Details</a>
+                          <button class=" btn btn-outline-success">Add to Cart</button>
+        </div>
+      </article>
+      <% } %>
+    </div>
+    <% } else { %>
+    <h1>No Products Found!</h1>
+    <% } %>
+
+  </main>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>
