@@ -1,12 +1,12 @@
 const express = require("express");
 const passport = require("passport");
 const router = express();
-const {ensureAuthenticated}=require("../config/auth");
+const { ensureAuthenticated } = require("../config/auth");
 const Product = require("../models/product");
 
 router.get("/", (req, res, next) => res.render("welcome"));
 
-router.get("/index", ensureAuthenticated,(req, res) => {
+router.get("/index", ensureAuthenticated, (req, res) => {
   Product.fetchAll()
     .then((products) => {
       res.render("index", {
@@ -18,7 +18,7 @@ router.get("/index", ensureAuthenticated,(req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/addBook",ensureAuthenticated, (req, res) => {
+router.get("/addBook", ensureAuthenticated, (req, res) => {
   res.render("addBook", {
     pageTitle: "Add Product",
     path: "/addBook",
@@ -37,7 +37,7 @@ router.post("/addBook", (req, res, next) => {
       console.log("Created Product");
       res.redirect("addBook");
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("err"));
 
   res.redirect("/index");
 });
