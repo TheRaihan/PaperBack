@@ -42,4 +42,8 @@ router.post("/addBook", (req, res, next) => {
   res.redirect("/index");
 });
 
+router.get("/about", (req, res, next) => {
+  res.render("about");
+});
+
 module.exports = router;
