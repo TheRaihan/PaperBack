@@ -30,7 +30,6 @@ exports.postAddBook = (req, res, next) => {
     price: price,
     des: des,
     imgURL: imgURL,
-    userID: req
   });
 
   product

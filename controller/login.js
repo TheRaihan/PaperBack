@@ -7,11 +7,7 @@ exports.postRegister = (req, res, next) => {
   const { name, email, password, password2 } = req.body;
 
   let errors = [];
-  const userID = email.substring(0, email.indexOf("@")); // var str = "2017-1-60-072@std.ewubd.edu";
-  // var n = str.indexOf("@");
-  // console.log(n);
-  // var res = str.substring(0, n);
-  // console.log(res);
+
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
 
@@ -44,7 +40,6 @@ exports.postRegister = (req, res, next) => {
         const newUser = new User({
           name: name,
           email: email,
-          userID: userID,
           password: password,
         });
 
@@ -73,8 +68,6 @@ exports.postRegister = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
-  const email = req.body.email;
-  console.log(email);
   passport.authenticate("local", {
     successRedirect: "/index",
     failureRedirect: "/users/login",
