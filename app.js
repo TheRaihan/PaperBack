@@ -7,8 +7,6 @@ const session = require("express-session");
 
 const app = express();
 
-const mongoConnect = require("./util/database").mongoConnect;
-
 // Passport Config
 require("./config/passport")(passport);
 
@@ -58,4 +56,4 @@ app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 //app.use('/',require('./routes/dass'));
 
-mongoConnect(() => app.listen(5000));
+app.listen(5000);
