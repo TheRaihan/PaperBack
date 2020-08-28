@@ -1,34 +1,24 @@
-const getDb = require("../util/database").getDb;
+const mongoose = require("mongoose");
 
-class Product {
-  constructor(title, price, des, imgURL) {
-    this.title = title;
-    this.price = price;
-    this.des = des;
-    this.imgURL = imgURL;
-  }
+const Schema = mongoose.Schema;
 
-  save() {
-    const db = getDb();
-    return db
-      .collection("products")
-      .insertOne(this)
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-  }
+const productSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  des: {
+    type: String,
+    required: false,
+  },
+  imgURL: {
+    type: String,
+    required: true,
+  },
+});
 
-  static fetchAll() {
-    const db = getDb();
-    return db
-      .collection("products")
-      .find()
-      .toArray()
-      .then((products) => {
-        console.log();
-        return products;
-      })
-      .catch((err) => console.log(err));
-  }
-}
-
-module.exports = Product;
+module.exports = mongoose.model("Product", productSchema);
