@@ -4,6 +4,7 @@ exports.home = (req, res, next) => {
   Product.find()
     .then((products) => {
       res.render("index", {
+        name: req.user.name,
         prods: products,
         pageTitle: "Home",
         path: "/index",
@@ -14,6 +15,8 @@ exports.home = (req, res, next) => {
 
 exports.getAddBook = (req, res, next) => {
   res.render("addBook", {
+    name: req.user.name,
+    userID: req.user.userID,
     pageTitle: "Add Product",
     path: "/addBook",
   });
@@ -24,12 +27,14 @@ exports.postAddBook = (req, res, next) => {
   const imgURL = req.body.imgURL;
   const price = req.body.price;
   const des = req.body.des;
+  const userID = req.body.userID;
 
   const product = new Product({
     title: title,
     price: price,
     des: des,
     imgURL: imgURL,
+    userID: userID,
   });
 
   product

@@ -8,6 +8,12 @@ exports.postRegister = (req, res, next) => {
 
   let errors = [];
 
+  const userID = email.substring(0, email.indexOf("@"));    // var str = "mhkhan@std.ewubd.edu";
+                                                            // var n = str.indexOf("@");
+                                                            // console.log(n);
+                                                            // var res = str.substring(0, n);
+                                                            // console.log(res);
+
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
 
@@ -39,6 +45,7 @@ exports.postRegister = (req, res, next) => {
       } else {
         const newUser = new User({
           name: name,
+          userID: userID,
           email: email,
           password: password,
         });
