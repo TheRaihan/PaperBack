@@ -1,0 +1,35 @@
+<%- include('./includes/head.ejs') %>
+
+
+</head>
+
+<body>
+  <%- include('./includes/nav.ejs') %>
+
+  <main>
+    <div class="card col-4 m-auto mb-3">
+      <h3 class="card-header m-auto"><%= name %></h3>
+
+      <img class="m-auto" style="height: 350px; width: 80%; display: block;"
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F26%2F801997_user_512x512.png&f=1&nofb=1"
+        alt="Card image">
+      <div class="card-body m-auto">
+        <h5 class="card-title">Student</h5>
+        <h6 class="card-subtitle text-muted " style="margin-left: 30%;">CSE</h6>
+      </div>
+      <ul class="row m-auto">
+        <li class="list-group-item"><i class="fas fa-envelope" style="font-size:24px;"></i></li>
+        <li class=" list-group-item"><i class="fas fa-heart" style="font-size:24px;"></i></li>
+        <li class="list-group-item"><i class="fas fa-thumbs-down" style="font-size:24px;"></i></li>
+      </ul>
+      <!-- <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div> -->
+      <div class="card-footer text-muted m-auto">
+        active now
+      </div>
+    </div>
+
+  </main>
+  <%- include('./includes/end.ejs') %>

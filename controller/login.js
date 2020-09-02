@@ -8,11 +8,11 @@ exports.postRegister = (req, res, next) => {
 
   let errors = [];
 
-  const userID = email.substring(0, email.indexOf("@"));    // var str = "mhkhan@std.ewubd.edu";
-                                                            // var n = str.indexOf("@");
-                                                            // console.log(n);
-                                                            // var res = str.substring(0, n);
-                                                            // console.log(res);
+  const userID = email.substring(0, email.indexOf("@")); // var str = "mhkhan@std.ewubd.edu";
+  // var n = str.indexOf("@");
+  // console.log(n);
+  // var res = str.substring(0, n);
+  // console.log(res);
 
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
@@ -86,4 +86,12 @@ exports.logout = (req, res, next) => {
   req.logout();
   req.flash("success_msg", "You have successfully logged out");
   res.redirect("/users/login");
+};
+
+exports.profile = (req, res, next) => {
+  res.render("profile", {
+    name: req.user.name,
+    userID: req.user.userID,
+    email: req.user.email,
+  });
 };

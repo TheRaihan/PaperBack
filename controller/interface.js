@@ -5,6 +5,7 @@ exports.home = (req, res, next) => {
     .then((products) => {
       res.render("index", {
         name: req.user.name,
+        userID: req.user.userID,
         prods: products,
         pageTitle: "Home",
         path: "/index",
