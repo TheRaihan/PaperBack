@@ -1,46 +1,60 @@
-<div class="row mt-5">
-  <div class="col-md-4 m-auto">
-    <div class="card card-body">
-      <h1 class="text-center mb-3">
-        <i class="fas fa-user-plus"></i> Register
-      </h1>
+<%- include('./includes/head.ejs') %>
 
-      <% if(typeof errors != 'undefined') { %> <% errors.forEach(function(error)
+</head>
+
+<body style="background-image:
+url('https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+  <!-- https://images.pexels.com/photos/2688058/pexels-photo-2688058.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/2946974/pexels-photo-2946974.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/3747464/pexels-photo-3747464.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 -->
+  <!-- https://images.pexels.com/photos/3747484/pexels-photo-3747484.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/2908976/pexels-photo-2908976.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 -->
+
+  <div class="row mt-5">
+    <div class="col-md-3" style="margin-left: 65%; ">
+      <div class="card card-body" style="border-radius: 5%; margin-top: 4%;">
+        <h4 class="text-center mb-3">
+          <i class="fas fa-user-plus" style="font-size: 28px"></i> Register
+        </h4>
+
+        <% if(typeof errors != 'undefined') { %> <% errors.forEach(function(error)
       { %>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <%= error.msg %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <% }); %> <% } %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <%= error.msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% }); %> <% } %>
 
-      <form action="/users/register" method="POST">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
-            value="<%= typeof name != 'undefined' ? name : '' %>" />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Enter EWU Email"
-            value="<%= typeof email != 'undefined' ? email : '' %>" />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Create Password"
-            value="<%= typeof password != 'undefined' ? password : '' %>" />
-        </div>
-        <div class="form-group">
-          <label for="password2">Confirm Password</label>
-          <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
-            value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">
-          Register
-        </button>
-      </form>
-      <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+        <form action="/users/register" method="POST">
+          <div class="form-group">
+            <label for="name"><i class="far fa-user" style="font-size: 16px; padding-right: 5px"></i>Name</label>
+            <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
+              value="<%= typeof name != 'undefined' ? name : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="far fa-envelope" style="font-size: 16px; padding-right: 5px"></i> Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter EWU Email"
+              value="<%= typeof email != 'undefined' ? email : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fas fa-key" style="font-size: 16px; padding-right: 5px"></i>Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Create Password"
+              value="<%= typeof password != 'undefined' ? password : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="password2"><i class="fas fa-lock" style="font-size: 16px; padding-right: 5px"></i>Confirm
+              Password</label>
+            <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
+              value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+          </div>
+          <button type="submit" class="col-6 m-auto btn btn-outline-primary btn-block">
+            Register
+          </button>
+        </form>
+        <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+      </div>
     </div>
   </div>
-</div>

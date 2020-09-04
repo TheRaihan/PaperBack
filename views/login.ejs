@@ -3,13 +3,18 @@
 </head>
 
 <body style="background-image:
-url('https://images.pexels.com/photos/2946974/pexels-photo-2946974.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)">
+url('https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
   <!-- https://images.pexels.com/photos/2688058/pexels-photo-2688058.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/2946974/pexels-photo-2946974.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/3747464/pexels-photo-3747464.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 -->
+  <!-- https://images.pexels.com/photos/3747484/pexels-photo-3747484.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 -->
+  <!-- https://images.pexels.com/photos/2908976/pexels-photo-2908976.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 -->
 
-  <div class="row">
+  <div class="row ">
     <div class="col-md-3" style="margin-left: 65%; margin-top: 7%;">
-      <div class="card card-body">
-        <h4 class="text-center mb-3"><i class="fas fa-sign-in-alt" style="font-size: 30px;"></i> Login</h4>
+      <div class="card card-body " style="border-radius: 5%;">
+        <h4 class="text-center mb-3"><i class="fas fa-door-open" style="font-size: 25px;"></i> Login</h4>
 
         <% if(success_msg != '') {%>
         <div class="alert alert-success" role="alert">
@@ -31,14 +36,15 @@ url('https://images.pexels.com/photos/2946974/pexels-photo-2946974.jpeg?auto=com
 
         <form action="/users/login" method="POST">
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+            <label for="email"><i class="far fa-envelope" style="font-size: 16px; padding-right: 5px"></i>Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter EWU Email" />
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password"><i class="fas fa-lock"
+                style="font-size: 16px; padding-right: 5px"></i>Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <button type="submit" class="col-6 m-auto btn btn-outline-primary btn-block">Login</button>
         </form>
         <p class="lead mt-4">
           No Account? <a href="/users/register">Register</a>

@@ -3,7 +3,7 @@ const router = express();
 const { ensureAuthenticated } = require("../config/auth");
 const intrfc = require("../controller/interface");
 
-router.get("/", (req, res, next) => res.render("welcome"));
+router.get("/", (req, res, next) => res.render("login"));
 
 router.get("/index", ensureAuthenticated, intrfc.home);
 
