@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
-
+const path = require("path");
 const app = express();
 
 // Passport Config
@@ -25,6 +25,7 @@ app.set("view engine", "ejs");
 
 // Body Parser
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 
 // app.use
 // Express session
@@ -55,8 +56,6 @@ app.use("/", require("./routes/index"));
 
 app.use("/users", require("./routes/users"));
 //app.use('/',require('./routes/dass'));
-
-
 
 app.use((req, res, next) => {
   res.status(404).send("<h1>Error page</h1>");

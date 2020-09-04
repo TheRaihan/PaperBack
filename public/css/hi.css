@@ -3256,7 +3256,8 @@ body.landing #page-wrapper {
 #banner {
   background-attachment: scroll, fixed;
   background-color: #666;
-  background-image: url("images/overlay.png"),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("images/overlay.png"),
     url("https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
   background-position: top left, center center;
   background-repeat: repeat, no-repeat;
@@ -3351,7 +3352,7 @@ body.landing #main {
 
 #footer {
   background: #f0f0f0;
-  padding: 4em 0 6em 0;
+  padding: 2em 0 2em 0;
   text-align: center;
 }
 
