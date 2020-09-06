@@ -7,16 +7,18 @@
   <%- include('./includes/nav.ejs') %>
 
   <main>
-    <div class="card col-4 m-auto mb-3">
-      <h3 class="card-header m-auto"><%= name %></h3>
+    <div class="card col-4 m-auto mb-3" style="margin-bottom: 30%;">
+      <h3 class="card-header m-auto"><%= rName %></h3>
 
       <img class="m-auto" style="height: 350px; width: 80%; display: block;"
         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F26%2F801997_user_512x512.png&f=1&nofb=1"
         alt="Card image">
       <div class="card-body m-auto">
-        <h5 class="card-title">Student</h5>
-        <h6 class="card-subtitle text-muted " style="margin-left: 30%;">CSE</h6>
+        <h5 class="card-title" style="margin-left: 3px;">Student</h5>
+        <h6 class="card-subtitle" style="margin-bottom: 10px;"><%=rUserID%></h6>
+        <h6 class="card-subtitle text-muted " style="margin-left: 33%;">CSE</h6>
       </div>
+
       <ul class="row m-auto">
         <li class="list-group-item"><i class="fas fa-envelope" style="font-size:24px;"></i></li>
         <li class=" list-group-item"><i class="fas fa-heart" style="font-size:24px;"></i></li>
@@ -30,6 +32,37 @@
         active now
       </div>
     </div>
+
+    <% if (prods.length > 0) { %>
+    <div class="row" style="margin: 2%;">
+      <% for (let product of prods) { 
+        if (product.userID == rUserID) {%>
+      <article class="col-3 m-auto " style="margin-left: 10px;">
+
+        <header class="card__header" style="text-align: center; margin-top: 3%;">
+          <h5 class="product__title" style="text-align: center;"><%= product.title %></h5>
+        </header>
+
+        <div class=" card__image">
+          <img style="width: 100%; display: block;" src="<%= product.imgURL %>" alt="<%= product.title %>">
+        </div>
+
+        <div class="card__content">
+          <h5 style="text-align: center; padding-top: 5px;"><%= product.price %> BDT</h5>
+          <p class="product__description"><%= product.des %></p>
+        </div>
+
+        <div class="card__actions m-auto">
+          <a href="/products/<%= product.userID %> " class="btn btn-outline-success"">Edit Book</a>
+              <a href=" #" class="btn btn-outline-danger"">Delete</a>
+        </div>
+
+        </article>
+        <% } } %>
+      </div>
+      <% } else { %>
+      <h3 style=" text-align: center; margin: 10px 70px; font-family: 'Roboto' ;">No Products Found!</h3>
+            <% } %>
 
   </main>
   <%- include('./includes/end.ejs') %>

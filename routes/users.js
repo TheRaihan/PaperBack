@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const loginCntrl = require("../controller/login");
+const { ensureAuthenticated } = require("../config/auth");
 
 router.get("/login", (req, res, next) => res.render("login"));
 
@@ -15,6 +16,6 @@ router.post("/login", loginCntrl.postLogin);
 //logout
 router.get("/logout", loginCntrl.logout);
 
-router.get("/:userID", loginCntrl.profile);
+router.get("/:userID", ensureAuthenticated, loginCntrl.profile);
 
 module.exports = router;

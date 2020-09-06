@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const User = require("../models/User");
+const Product = require("../models/product");
 
 exports.postRegister = (req, res, next) => {
   // console.log(req.body);
@@ -44,8 +45,8 @@ exports.postRegister = (req, res, next) => {
         });
       } else {
         const newUser = new User({
+          _id: userID,
           name: name,
-          userID: userID,
           email: email,
           password: password,
         });
@@ -89,9 +90,27 @@ exports.logout = (req, res, next) => {
 };
 
 exports.profile = (req, res, next) => {
-  res.render("profile", {
-    name: req.user.name,
-    userID: req.user.userID,
-    email: req.user.email,
-  });
+  const rUserID = req.params.userID;
+  let prods = [];
+  Product.find()
+    .then((products) => {
+      prods = products;
+    })
+    .catch((err) => console.log(err));
+
+  User.findById(rUserID)
+    .then((user) => {
+      res.render("profile", {
+        user: user,
+        name: req.user.name,
+        userID: req.user.userID,
+        rName: user.name,
+        rUserID: user._id,
+        prods: prods,
+        // rUserID: rUserID,
+        email: user.email,
+      });
+    })
+    .catch((err) => console.log(err));
 };
+// .catch((err) => console.log(err));

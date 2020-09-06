@@ -5,19 +5,20 @@ exports.home = (req, res, next) => {
     .then((products) => {
       res.render("index", {
         name: req.user.name,
-        userID: req.user.userID,
+        userID: req.user._id,
         prods: products,
         pageTitle: "Home",
         path: "/index",
       });
     })
     .catch((err) => console.log(err));
+    
 };
 
 exports.getAddBook = (req, res, next) => {
   res.render("addBook", {
     name: req.user.name,
-    userID: req.user.userID,
+    userID: req.user._id,
     pageTitle: "Add Product",
     path: "/addBook",
   });
