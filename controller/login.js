@@ -103,7 +103,7 @@ exports.profile = (req, res, next) => {
       res.render("profile", {
         user: user,
         name: req.user.name,
-        userID: req.user.userID,
+        userID: req.user._id,
         rName: user.name,
         rUserID: user._id,
         prods: prods,
