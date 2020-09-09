@@ -58,7 +58,11 @@ app.use("/users", require("./routes/users"));
 //app.use('/',require('./routes/dass'));
 
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Error page</h1>");
+  res.status(404).render("404", {
+    name: req.user.name,
+    userID: req.user._id,
+    ERROR: "Page Not Found",
+  });
 });
 
 app.listen(5000);
