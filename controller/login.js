@@ -89,17 +89,16 @@ exports.logout = (req, res, next) => {
   res.redirect("/users/login");
 };
 
-exports.profile = (req, res, next) => {
+exports.profile = async (req, res, next) => {
   const rUserID = req.params.userID;
   let prods = [];
-  Product.find()
-    .then((products) => {
-      prods = products;
-    })
-    .catch((err) => console.log(err));
 
-  User.findById(rUserID)
-    .then((user) => {
+  try {
+    let user = await User.findById(rUserID);
+
+    if (user !== null) {
+      let products = await Product.find();
+      prods = products;
       res.render("profile", {
         user: user,
         name: req.user.name,
@@ -110,7 +109,9 @@ exports.profile = (req, res, next) => {
         // rUserID: rUserID,
         email: user.email,
       });
-    })
-    .catch((err) => console.log(err));
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 // .catch((err) => console.log(err));
