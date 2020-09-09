@@ -1,12 +1,15 @@
- <%- include('./includes/head.ejs') %>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Error page</title>
-  </head>
-  <body>
-    <%- include('./includes/nav.ejs') %>
-    <h1>                                      Page not found</h1>
-  </body>
+<%- include('./includes/head.ejs') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error page</title>
+</head>
+
+<body>
+  <%- include('./includes/nav.ejs') %>
+  <h3 style="text-align: center; font-family: 'roboto';"> <%= ERROR %> </h3>
+</body>
+
 </html>
 <%- include('./includes/end.ejs') %>
