@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express();
-const { ensureAuthenticated } = require("../config/auth");
+const { ensureAuthenticated ,forwardAuthenticated} = require("../config/auth");
 const intrfc = require("../controller/interface");
 
-router.get("/", (req, res, next) => res.render("hi"));
+router.get("/", forwardAuthenticated,(req, res, next) => res.render("hi"));
 
 router.get("/index", ensureAuthenticated, intrfc.home);
 
