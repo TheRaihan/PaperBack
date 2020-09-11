@@ -14,7 +14,13 @@ exports.postRegister = (req, res, next) => {
   // console.log(n);
   // var res = str.substring(0, n);
   // console.log(res);
-
+  let dept;
+  const deptid = email.substring(7, 9);
+  if (deptid === "60") dept = "Student of CSE " ;
+  if (deptid === "10") dept = "Student of BBA  ";
+  if (deptid === "50") dept = "Student of EEE  ";
+  if (deptid === "55") dept = "Student of CIVIL";
+  else dept ="Faculty";
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
 
@@ -30,6 +36,7 @@ exports.postRegister = (req, res, next) => {
       email,
       password,
       password2,
+     deptid,
     });
   } else {
     User.findOne({ email: email }).then((user) => {
@@ -42,6 +49,7 @@ exports.postRegister = (req, res, next) => {
           email: email,
           password: password,
           password2: password2,
+          deptid: deptid,
         });
       } else {
         const newUser = new User({
@@ -49,6 +57,7 @@ exports.postRegister = (req, res, next) => {
           name: name,
           email: email,
           password: password,
+          dept: dept,
         });
 
         //hash password
@@ -103,8 +112,10 @@ exports.profile = async (req, res, next) => {
         user: user,
         name: req.user.name,
         userID: req.user._id,
+        deptid: req.user.dept,
         rName: user.name,
         rUserID: user._id,
+        rdeptid: user.dept,
         prods: prods,
         // rUserID: rUserID,
         email: user.email,
