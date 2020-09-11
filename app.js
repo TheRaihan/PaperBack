@@ -26,8 +26,6 @@ app.set("view engine", "ejs");
 // Body Parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-
-// app.use
 // Express session
 app.use(
   session({
@@ -36,7 +34,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
