@@ -76,7 +76,7 @@ body {
   line-height: 1.5;
   color: #adafae;
   text-align: left;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../images/banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;

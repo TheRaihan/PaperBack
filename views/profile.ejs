@@ -12,17 +12,26 @@
         <div class="card" style="height: 550px;margin-bottom: 30%;">
           <h4 class="card-header m-auto"><%= rName %></h4>
 
-          <img class="m-auto" style="height: 350px; width: 80%; display: block;"
+          <img class="m-auto" style="height: 50%; width: 80%; display: block;"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F26%2F801997_user_512x512.png&f=1&nofb=1"
             alt="Card image">
-          <div class="card-body m-auto">
-            <!-- <h5 class="card-title" style="margin-left: 3px;">Student</h5> -->
-            
-            <h6 class="card-subtitle" style="margin-bottom: 10px;"><%=rUserID%></h6>
-            <h6 class="card-subtitle " style="margin-bottom: 30px;"><%=rdeptid%></h6>
+
+          <div class="card-body m-auto" style="margin-bottom: 10%; text-align: center;">
+            <h5 class="card-title">Student</h5>
+            <h6 class="card-subtitle " style="margin-bottom: 10%;"><%=rUserID%></h6>
+            <h6 class="card-subtitle text-muted" style="margin-bottom: 10%;"><%=rdeptid%></h6>
           </div>
 
-          
+          <div>
+            <ul class="card-subtitle row ml-4" style="margin-top: 10%;">
+              <li class="list-group-item"><i class="fas fa-envelope" style="font-size:24px;"></i></li>
+              <li class=" list-group-item"><i class="fas fa-heart" style="font-size:24px;"></i></li>
+              <li class="list-group-item"><i class="fas fa-thumbs-down" style="font-size:24px;"></i></li>
+            </ul>
+          </div>
+
+
+
           <!-- <div class="card-body">++
         <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a>
