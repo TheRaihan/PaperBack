@@ -221,3 +221,7 @@ form {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.caption {
+  font-family: "Open Sans Condensed", sans-serif;
+}
