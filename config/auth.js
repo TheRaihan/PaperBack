@@ -1,5 +1,5 @@
 module.exports = {
-  ensureAuthenticated:(req, res, next)=> {
+  ensureAuthenticated: (req, res, next) => {
     if (req.isAuthenticated()) {
       return next();
     }
@@ -7,10 +7,10 @@ module.exports = {
     res.redirect("/users/login");
   },
 
-  forwardAuthenticated:(req, res, next) =>{
+  forwardAuthenticated: (req, res, next) => {
     if (!req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/index");      
+    res.redirect("/index");
   },
 };

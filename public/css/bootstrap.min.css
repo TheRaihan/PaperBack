@@ -6488,7 +6488,9 @@ a.close.disabled {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 15%;
+  margin-top: 10%;
+  width: 12%;
+  height: 60%;
   color: #fff;
   text-align: center;
   opacity: 0.5;
