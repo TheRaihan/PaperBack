@@ -1,0 +1,50 @@
+<%- include('./includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+  <%- include('./includes/nav.ejs') %>
+
+  <main>
+    <form class="col-md-4 m-auto" style="padding-top: 3%;" action=" /addBook" method="POST">
+      <fieldset>
+        <legend style="text-align: center;">Add Book</legend>
+
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="Book Name">
+          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="text" class="form-control" name="imgURL" id="imgURL" placeholder="Paste an image Url here">
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <input type="text" class="form-control" name="price" id="price" placeholder="Book Price">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleTextarea">Description</label>
+          <textarea class="form-control" name="des" id="des" rows="3"
+            placeholder="any opinion about the book?"></textarea>
+        </div>
+
+        <input type="hidden" name="userID" value="<%= userID %>">
+        <!-- <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above
+            input. It's a bit lighter and easily wraps to a new line.</small>
+        </div> -->
+        <input type="hidden" value="<%= product._id %>" name="productId">
+
+        <button class="btn" type="submit">Update Product</button>
+        
+      </fieldset>
+    </form>
+  </main>
+  <%- include('./includes/end.ejs') %>

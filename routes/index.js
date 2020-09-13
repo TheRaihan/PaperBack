@@ -5,6 +5,7 @@ const intrfc = require("../controller/interface");
 
 router.get("/", forwardAuthenticated, (req, res, next) => res.render("hi"));
 
+
 router.get("/index", ensureAuthenticated, intrfc.home);
 
 router.get("/addBook", ensureAuthenticated, intrfc.getAddBook);
@@ -15,5 +16,9 @@ router.get("/about", (req, res, next) => res.render("about"));
 
 router.get("/books/:bookID", ensureAuthenticated, intrfc.bookDetails);
 // localhost/
+
+//edit book
+
+
 
 module.exports = router;
