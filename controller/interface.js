@@ -1,3 +1,4 @@
+const { static } = require("express");
 const Product = require("../models/product");
 
 exports.home = (req, res, next) => {
@@ -12,7 +13,6 @@ exports.home = (req, res, next) => {
       });
     })
     .catch((err) => console.log(err));
-    
 };
 
 exports.getAddBook = (req, res, next) => {
@@ -47,3 +47,37 @@ exports.postAddBook = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+//edit
+// 
+// exports.postEditProduct = (req, res, next) => {
+//   const prodId = req.body.productId;
+//   const updatedTitle = req.body.title;
+//   const updatedPrice = req.body.price;
+//   const updatedImageUrl = req.body.imageUrl;
+//   const updatedDesc = req.body.description;
+//   Product.findById(prodId)
+//     .then((product) => {
+//       product.title = updatedTitle;
+//       product.price = updatedPrice;
+//       product.description = updatedDesc;
+//       product.imageUrl = updatedImageUrl;
+//       return product.save();
+//     })
+//     .then((result) => {
+//       console.log("UPDATED PRODUCT!");
+//       res.redirect("/profile");
+//     })
+//     .catch((err) => console.log(err));
+// };
+// exports.getProducts = (req, res, next) => {
+//   Product.find()
+//     .then((products) => {
+//       res.render("profile", {
+//         prods: products,
+//         pageTitle: "Admin Products",
+//         path: "profile",
+//       });
+//     })
+//     .catch((err) => console.log(err));
+// };

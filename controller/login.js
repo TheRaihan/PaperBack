@@ -16,11 +16,11 @@ exports.postRegister = (req, res, next) => {
   // console.log(res);
   let dept;
   const deptid = email.substring(7, 9);
-  if (deptid === "60") dept = "Student of CSE " ;
+  if (deptid === "60") dept = "Student of CSE ";
   if (deptid === "10") dept = "Student of BBA  ";
   if (deptid === "50") dept = "Student of EEE  ";
   if (deptid === "55") dept = "Student of CIVIL";
-  else dept ="Faculty";
+  else dept = "Faculty";
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
 
@@ -36,7 +36,7 @@ exports.postRegister = (req, res, next) => {
       email,
       password,
       password2,
-     deptid,
+      deptid,
     });
   } else {
     User.findOne({ email: email }).then((user) => {
@@ -125,4 +125,36 @@ exports.profile = async (req, res, next) => {
     console.log(err);
   }
 };
+
+exports.getDeleteProduct = (req, res, next) => {
+  const userId = req.params.userID
+  const prodId = req.params.prodID;
+  console.log(prodId);
+  Product.findByIdAndRemove(prodId)
+    .then(() => {
+      console.log("DESTROYED PRODUCT");
+      res.redirect("/users/" + userId);
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getEditBook = (req, res, next) => {
+    const prodId = req.params.prodID;
+    const userId = req.params.userID;
+    Product.findById(prodId)
+      .then((product) => {
+        if (!product) {
+          return res.redirect("/");
+        }
+        res.render("editBook", {
+          name: req.user.name,
+          userID: req.user._id,
+          pageTitle: "Edit Product",
+          path: "/editBook",
+          product: product,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
 // .catch((err) => console.log(err));
