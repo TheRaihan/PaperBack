@@ -16,11 +16,11 @@ exports.postRegister = (req, res, next) => {
   // console.log(res);
   let dept;
   const deptid = email.substring(7, 9);
-  if (deptid === "60") dept = "Student of CSE " ;
+  if (deptid === "60") dept = "Student of CSE ";
   if (deptid === "10") dept = "Student of BBA  ";
   if (deptid === "50") dept = "Student of EEE  ";
   if (deptid === "55") dept = "Student of CIVIL";
-  else dept ="Faculty";
+  else dept = "Faculty";
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
 
@@ -36,7 +36,7 @@ exports.postRegister = (req, res, next) => {
       email,
       password,
       password2,
-     deptid,
+      deptid,
     });
   } else {
     User.findOne({ email: email }).then((user) => {
