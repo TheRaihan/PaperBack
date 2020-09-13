@@ -120,6 +120,12 @@ exports.profile = async (req, res, next) => {
         // rUserID: rUserID,
         email: user.email,
       });
+    } else {
+      res.render("404", {
+        name: req.user.name,
+        userID: req.user._id,
+        ERROR: "User Not Found",
+      });
     }
   } catch (err) {
     console.log(err);

@@ -1,4 +1,6 @@
 const { static } = require("express");
+
+
 const Product = require("../models/product");
 
 exports.home = (req, res, next) => {
@@ -81,3 +83,19 @@ exports.postAddBook = (req, res, next) => {
 //     })
 //     .catch((err) => console.log(err));
 // };
+
+exports.bookDetails = (req, res, next) => {
+  const bookId = req.params.bookID;
+  console.log(bookId);
+  Product.findById(bookId, (book) => {
+    console.log("2", book);
+    res.render("bookDetails", {
+      product: book,
+      name: req.user.name,
+      userID: req.user._id,
+      // pageTitle: book.title,
+      //path: "/products",
+    });
+  });
+};
+

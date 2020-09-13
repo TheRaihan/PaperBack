@@ -76,8 +76,8 @@ body {
   line-height: 1.5;
   color: #adafae;
   text-align: left;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../images/banner.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../images/wel2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: fixed;
@@ -6488,7 +6488,9 @@ a.close.disabled {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 15%;
+  margin-top: 10%;
+  width: 12%;
+  height: 60%;
   color: #fff;
   text-align: center;
   opacity: 0.5;

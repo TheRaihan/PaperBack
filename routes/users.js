@@ -1,11 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const loginCntrl = require("../controller/login");
-const { ensureAuthenticated } = require("../config/auth");
+const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
-router.get("/login", (req, res, next) => res.render("login"));
+router.get("/login", forwardAuthenticated, (req, res, next) =>
+  res.render("login")
+);
 
-router.get("/register", (req, res, next) => res.render("register"));
+router.get("/register", forwardAuthenticated, (req, res, next) =>
+  res.render("register")
+);
 
 // Register handle
 router.post("/register", loginCntrl.postRegister);

@@ -26,8 +26,6 @@ app.set("view engine", "ejs");
 // Body Parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-
-// app.use
 // Express session
 app.use(
   session({
@@ -36,7 +34,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -58,7 +55,11 @@ app.use("/users", require("./routes/users"));
 //app.use('/',require('./routes/dass'));
 
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Error page</h1>");
+  res.status(404).render("404", {
+    name: req.user.name,
+    userID: req.user._id,
+    ERROR: "Page Not Found",
+  });
 });
 
 app.listen(5000);
