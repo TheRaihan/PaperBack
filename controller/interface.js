@@ -1,6 +1,5 @@
 const { static } = require("express");
 
-
 const Product = require("../models/product");
 
 exports.home = (req, res, next) => {
@@ -10,6 +9,7 @@ exports.home = (req, res, next) => {
         name: req.user.name,
         userID: req.user._id,
         prods: products,
+        id: "",
         pageTitle: "Home",
         path: "/index",
       });
@@ -51,7 +51,7 @@ exports.postAddBook = (req, res, next) => {
 };
 
 //edit
-// 
+//
 // exports.postEditProduct = (req, res, next) => {
 //   const prodId = req.body.productId;
 //   const updatedTitle = req.body.title;
@@ -87,15 +87,42 @@ exports.postAddBook = (req, res, next) => {
 exports.bookDetails = (req, res, next) => {
   const bookId = req.params.bookID;
   console.log(bookId);
-  Product.findById(bookId, (book) => {
-    console.log("2", book);
-    res.render("bookDetails", {
-      product: book,
-      name: req.user.name,
-      userID: req.user._id,
-      // pageTitle: book.title,
-      //path: "/products",
-    });
-  });
+  Product.findById(bookId)
+    .then((book) => {
+      //console.log("2", book);
+      res.render("bookDetails", {
+        product: book,
+        name: req.user.name,
+        userID: req.user._id,
+        // pageTitle: book.title,
+        //path: "/products",
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
+exports.profile = async (req, res, next) => {
+  const rUserID = req.params.userID;
+  let prods = [];
+  User.findById(bookID)
+    .then((user) => {
+      product
+        .find()
+        .then((products) => {
+          prods = products;
+          console.log("1", prods, length);
+          return prods;
+        })
+        .catch((err) => console.log(err));
+      res.render("profile", {
+        user: user,
+        name: ruser.name,
+        userID: user._id,
+        prods: prods,
+        // rUserID: rUserID,
+        email: user.email,
+      });
+      console.log("2", prods.length);
+    })
+    .catch((err) => console.log(err));
+};

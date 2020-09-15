@@ -4,14 +4,14 @@
 <body>
     <%- include('./includes/nav.ejs') %>
     <main class="centered">
-            <h1><%= product.tittle %></h1>
+            <h3 style="text-align: center; font-family: 'roboto';"><%= product.title %></h3>
             <hr>
             <div>
-                <img src="<%= product.imageUrl  %>" alt="<%= product.tittle %>">
+                <img class="col-md-4 m-auto " src="<%= product.imgURL  %>" alt="<%= product.title %>">
             </div>
-            <h1><%= product.price %></h1>
-            <p><%= product.description %></p>
-              
+            <h1 style="text-align: center; font-family: 'roboto';"><%= product.price %></h1>
+            <p style="text-align: center; font-family: 'roboto';"><%= product.description %></p>
+                
 
     </main>
     <%- include('./includes/end.ejs') %>
