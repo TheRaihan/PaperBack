@@ -64,19 +64,21 @@
 
             <div class="card__actions m-auto">
 
-              <a href="/users/<%= rUserID %>/editBook/<%= product._id %>" class="btn btn-success"">Edit Book</a>
-              <a href=" /users/<%= rUserID %>/deleteBook/<%= product._id %>" class="btn btn-danger"">Delete</a>
+              <a href="/users/<%= rUserID %>/editBook/<%= product._id %>" class="btn btn-primary"
+                style="margin-left: 20%;">Edit Book</a>
+              <a href=" /users/<%= rUserID %>/deleteBook/<%= product._id %>" class="btn btn-danger"
+                style="margin-left: 2%;">Delete</a>
 
-        </div>
-
-        </article>
-        <% } } %>
-      </div>
-      <% } else { %>
-      <h3 style=" text-align: center; margin: 10px 70px; font-family: 'Roboto' ;">No Products Found!</h3>
-                <% } %>
             </div>
+
+          </article>
+          <% } } %>
         </div>
+        <% } else { %>
+        <h3 style=" text-align: center; margin: 10px 70px; font-family: 'Roboto' ;">No Products Found!</h3>
+        <% } %>
+      </div>
+    </div>
 
   </main>
   <%- include('./includes/end.ejs') %>

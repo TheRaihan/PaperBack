@@ -9,6 +9,7 @@ exports.home = (req, res, next) => {
         name: req.user.name,
         userID: req.user._id,
         prods: products,
+        id: "",
         pageTitle: "Home",
         path: "/index",
       });
@@ -85,10 +86,10 @@ exports.postAddBook = (req, res, next) => {
 
 exports.bookDetails = (req, res, next) => {
   const bookId = req.params.bookID;
-  console.log(bookId);
+  //   console.log(bookId);
   Product.findById(bookId)
     .then((book) => {
-      console.log("2", book);
+      //   console.log("2", book);
       res.render("bookDetails", {
         product: book,
         name: req.user.name,
