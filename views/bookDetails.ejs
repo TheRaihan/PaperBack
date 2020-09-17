@@ -15,8 +15,8 @@
 
 
       <div class="card__actions mt-3 ">
-        <a target="_blank" href="mailto:<%=product.userID%>@std.ewubd.edu" class=" btn btn-primary"
-          style="margin-left: 20%;">Contact Seller</a>
+        <a onclick="window.open(this.href,'_blank');return false;" href="mailto:<%=product.userID%>@std.ewubd.edu"
+          class=" btn btn-primary" style="margin-left: 20%;">Contact Seller</a>
         <a href="/users/<%= product.userID %>" class=" btn btn-primary" style="margin-left: 2%;">View Profile</a>
       </div>
 
