@@ -1,17 +1,39 @@
 <%- include('./includes/head.ejs') %>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/bookdetails.css">
 </head>
 
 <body>
-    <%- include('./includes/nav.ejs') %>
-    <main class="centered">
-            <h3 style="text-align: center; font-family: 'roboto';"><%= product.title %></h3>
-            <hr>
-            <div>
-                <img class="col-md-4 m-auto " src="<%= product.imgURL  %>" alt="<%= product.title %>">
-            </div>
-            <h1 style="text-align: center; font-family: 'roboto';"><%= product.price %></h1>
-            <p style="text-align: center; font-family: 'roboto';"><%= product.description %></p>
-                
+  <%- include('./includes/nav.ejs') %>
+  <main class="row">
+    <div class="col-3 ml-5" style="font-family: 'Open Sans Condensed', sans-serif;">
+      <h4 class="product__title" style="text-align: center; font-size: 38px;"><%= product.title %></h4>
+      <hr>
+      <div class="card__image">
+        <img style="width: 100%;" src="<%= product.imgURL %>" alt="<%= product.title %>">
+      </div>
 
-    </main>
-    <%- include('./includes/end.ejs') %>
+
+      <div class="card__actions mt-3 ">
+        <a href=" #" class="btn btn-primary" style="margin-left: 20%;">Contact Seller</a>
+        <a href="/users/<%= product.userID %>" class=" btn btn-primary" style="margin-left: 2%;">View Profile</a>
+      </div>
+    </div>
+    <div class="col-6 mx-auto mt-5" style="font-family: 'Open Sans Condensed', sans-serif;">
+      <h5 class="">About Book: </h5>
+      <p><%= product.des %></p><br>
+      <hr>
+
+      <p class="header"> Uploaded By: </p>
+      <p style="font-weight: lighter;"><%= product.userID %></p><br>
+
+      <p class="header"> Uploaded: </p>
+      <p style="font-weight: lighter;"> 15 days ago</p>
+
+
+      <h5 class="product__title" style="font-size: 28px; margin-top: 3%;"> Price:
+        <%= product.price %>
+      </h5>
+    </div>
+  </main>
+  <%- include('./includes/end.ejs') %>

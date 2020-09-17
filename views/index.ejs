@@ -82,8 +82,9 @@
           <h5 style="padding-top: 5%;"><%= product.price %> BDT</h5>
           <p class="product__description" style="font-size: 16px;"><%= product.des %></p>
           <div class=" card__actions">
-            <% let id = String(product._id); %>
-            <a href="/books/5f417c0605a3306f3625cd0f " class="btn btn-info"">Details</a>
+            <% id = product._id.toString() %>
+            <a href="/books/<%= id %>" class="btn btn-info""> Details</a>
+
           </div>
         </div>
       </article>
