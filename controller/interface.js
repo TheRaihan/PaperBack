@@ -90,6 +90,7 @@ exports.bookDetails = (req, res, next) => {
   Product.findById(bookId)
     .then((book) => {
       //   console.log("2", book);
+
       res.render("bookDetails", {
         product: book,
         name: req.user.name,
