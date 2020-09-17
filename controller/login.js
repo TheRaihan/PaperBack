@@ -58,6 +58,8 @@ exports.postRegister = (req, res, next) => {
           email: email,
           password: password,
           dept: dept,
+          isAdmin: false,
+          disable: false,
         });
 
         //hash password

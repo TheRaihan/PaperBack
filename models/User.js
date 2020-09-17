@@ -13,12 +13,20 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  dept:{
+  dept: {
     type: String,
     required: true,
   },
   password: {
     type: String,
+    required: true,
+  },
+  isAdmin: {
+    type: Boolean,
+    required: true,
+  },
+  disable: {
+    type: Boolean,
     required: true,
   },
   date: {
