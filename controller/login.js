@@ -116,6 +116,7 @@ exports.profile = async (req, res, next) => {
         rName: user.name,
         rUserID: user._id,
         rdeptid: user.dept,
+        rEmail: user.email,
         prods: prods,
         id: "",
         // rUserID: rUserID,
