@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
-const passport = require("passport");
 const User = require("../models/User");
 const Product = require("../models/product");
+const passport = require("passport");
 
 exports.postRegister = (req, res, next) => {
   // console.log(req.body);
@@ -14,13 +14,13 @@ exports.postRegister = (req, res, next) => {
   // console.log(n);
   // var res = str.substring(0, n);
   // console.log(res);
-  let dept;
+  let dept = "";
   const deptid = email.substring(7, 9);
-  if (deptid === "60") dept = "Student of CSE ";
-  if (deptid === "10") dept = "Student of BBA  ";
-  if (deptid === "50") dept = "Student of EEE  ";
-  if (deptid === "55") dept = "Student of CIVIL";
-  else dept = "Faculty";
+  if (deptid === "60") dept = "CSE";
+  else if (deptid === "10") dept = "BBA";
+  else if (deptid === "50") dept = "EEE";
+  else if (deptid === "55") dept = "CIVIL";
+  else if (deptid[0] > "A" && deptid[0] < "z") dept = "Faculty";
   if (!name || !email || !password || !password2)
     errors.push({ msg: "Please fill all fields" });
 
