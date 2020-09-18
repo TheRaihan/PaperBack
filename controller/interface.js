@@ -50,6 +50,44 @@ exports.postAddBook = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
+exports.getEditBook = (req, res, next) => {
+  const bookID = req.params.bookID;
+  Product.findById(bookID).then((product) => {
+    if (!product) {
+      return res.redirect("/");
+    }
+    res.render("editBook", {
+      name: req.user.name,
+      userID: req.user._id,
+      product: product,
+    });
+  });
+};
+
+exports.postEditBook = (req, res, next) => {
+  const userID = req.user._id;
+
+  const prodId = req.body.productId;
+  const updatedTitle = req.body.title;
+  const updatedPrice = req.body.price;
+  const updatedImgURL = req.body.imgURL;
+  const updatedDes = req.body.des;
+
+  Product.findById(prodId)
+    .then((product) => {
+      product.title = updatedTitle;
+      product.price = updatedPrice;
+      product.des = updatedDes;
+      product.imgURL = updatedImgURL;
+      return product.save();
+    })
+    .then((result) => {
+      console.log("UPDATED PRODUCT!");
+      res.redirect("/users/" + userID);
+    })
+    .catch((err) => console.log(err));
+};
+
 //edit
 //
 // exports.postEditProduct = (req, res, next) => {

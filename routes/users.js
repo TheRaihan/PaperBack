@@ -22,17 +22,13 @@ router.get("/logout", loginCntrl.logout);
 
 router.get("/:userID", ensureAuthenticated, loginCntrl.profile);
 
-router.get(
-  "/:userID/deleteBook/:prodID",
-  ensureAuthenticated,
-  loginCntrl.getDeleteProduct
-);
+router.get("/:userID/deleteBook/:prodID",ensureAuthenticated,loginCntrl.getDeleteProduct);
 
-router.get(
-  "/:userID/editBook/:prodID",
-  ensureAuthenticated,
-  loginCntrl.getEditBook
-);
+// router.get(
+//   "/:userID/editBook/:prodID",
+//   ensureAuthenticated,
+//   loginCntrl.getEditBook
+// );
 
 //router.get("/:userID/BookId/:prodID", ensureAuthenticated, loginCntrl.bookDetails);
 

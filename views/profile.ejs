@@ -66,8 +66,7 @@
             <div class="card__actions m-auto">
 
               <% if(userID == rUserID) { %>
-              <a href="/users/<%= rUserID %>/editBook/<%= product._id %>" class="btn btn-primary"
-                style="margin-left: 20%;">Edit Book</a>
+              <a href="/editBook/<%= product._id %>" class="btn btn-primary" style="margin-left: 20%;">Edit Book</a>
               <a href=" /users/<%= rUserID %>/deleteBook/<%= product._id %>" class="btn btn-danger"
                 style="margin-left: 2%;">Delete</a>
               <% } else { 
