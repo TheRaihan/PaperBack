@@ -9,7 +9,7 @@
   <main>
     <div class="row">
       <div class="col-3 ml-5">
-        <div class="card" style="height: 550px;margin-bottom: 30%;font-family: 'Open Sans Condensed', sans-serif;">
+        <div class="card" style="height: 550px;margin-bottom: 10%;font-family: 'Open Sans Condensed', sans-serif;">
           <h4 class="card-header m-auto"><%= rName %></h4>
 
           <img class="m-auto" style="height: 50%; width: 80%; display: block;"
@@ -46,6 +46,10 @@
             active now
           </div>
         </div>
+        <% if(isAdmin == true && risAdmin == false) {%>
+        <a href="/users/<%=rUserID%>/makeAdmin" class="btn btn-secondary" style="margin-left: 20%;">Make Admin</a>
+        <a href="/users/<%=rUserID%>/disable" class="btn btn-secondary" style="margin-left: 2%;">Disable</a>
+        <% } %>
       </div>
 
       <div class="col-8">

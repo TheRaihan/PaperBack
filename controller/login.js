@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const Admin = require("../models/Admin");
 const Product = require("../models/product");
 const passport = require("passport");
 
@@ -115,10 +116,12 @@ exports.profile = async (req, res, next) => {
         name: req.user.name,
         userID: req.user._id,
         deptid: req.user.dept,
+        isAdmin: req.user.isAdmin,
         rName: user.name,
         rUserID: user._id,
         rdeptid: user.dept,
         rEmail: user.email,
+        risAdmin: user.isAdmin,
         prods: prods,
         id: "",
         // rUserID: rUserID,
@@ -148,23 +151,58 @@ exports.getDeleteProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.getEditBook = (req, res, next) => {
-  const prodId = req.params.prodID;
-  const userId = req.params.userID;
-  Product.findById(prodId)
-    .then((product) => {
-      if (!product) {
-        return res.redirect("/");
-      }
-      res.render("editBook", {
-        name: req.user.name,
-        userID: req.user._id,
-        pageTitle: "Edit Product",
-        path: "/editBook",
-        product: product,
+exports.makeAdmin = (req, res, next) => {
+  const userID = req.params.userID;
+
+  User.findById(userID)
+    .then((user) => {
+      user.isAdmin = true;
+      const admin = new Admin({
+        name: user.name,
+        email: user.email,
       });
+      admin.save();
+      return user.save();
+    })
+    .then((result) => {
+      console.log("Made Admin!");
+      res.redirect("/users/" + userID);
     })
     .catch((err) => console.log(err));
 };
+
+exports.disable = (req, res, next) => {
+  const userID = req.params.userID;
+
+  User.findById(userID)
+    .then((user) => {
+      user.disable == true ? (user.disable = false) : (user.disable = true);
+      return user.save();
+    })
+    .then((result) => {
+      console.log("Banned User");
+      res.redirect("/index");
+    })
+    .catch((err) => console.log(err));
+};
+
+// exports.getEditBook = (req, res, next) => {
+//   const prodId = req.params.prodID;
+//   const userId = req.params.userID;
+//   Product.findById(prodId)
+//     .then((product) => {
+//       if (!product) {
+//         return res.redirect("/");
+//       }
+//       res.render("editBook", {
+//         name: req.user.name,
+//         userID: req.user._id,
+//         pageTitle: "Edit Product",
+//         path: "/editBook",
+//         product: product,
+//       });
+//     })
+//     .catch((err) => console.log(err));
+// };
 
 // .catch((err) => console.log(err));
