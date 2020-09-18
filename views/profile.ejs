@@ -17,18 +17,22 @@
             alt="Card image">
 
           <div class="card-body m-auto" style="margin-bottom: 10%; text-align: center;">
+            <% if(rdeptid != "Faculty") { %>
             <h5 class="card-title" style="font-size:26px;">Student</h5>
             <h6 class="card-subtitle " style="margin-bottom: 10%;font-size:18px;"><%=rUserID%></h6>
             <h6 class="card-subtitle text-muted" style="margin-bottom: 10%;font-size:18px;"><%=rdeptid%></h6>
+            <% } else { %>
+            <h5 class="card-title" style="font-size:26px;">Faculty</h5>
+            <%}%>
           </div>
 
           <div>
             <ul class="card-subtitle row ml-4" style="margin-top: 10%;">
               <li class="list-group-item"><a onclick="window.open(this.href,'_blank');return false;"
                   href="mailto:<%=rEmail%> "><i class="fas fa-envelope" style="font-size:24px;"></i></a></li>
-              <li class=" list-group-item"><a href="#"><i class="fas fa-heart" style="font-size:24px;"></i></a></li>
-              <li class="list-group-item"><a href="#"><i class="fas fa-thumbs-down" style="font-size:24px;"></i></a>
-              </li>
+            <li class=" list-group-item"><a href="#"><i class="fas fa-heart" style="font-size:24px;"></i></a></li>
+            <li class="list-group-item"><a href="#"><i class="fas fa-thumbs-down" style="font-size:24px;"></i></a>
+            </li>
             </ul>
           </div>
 
