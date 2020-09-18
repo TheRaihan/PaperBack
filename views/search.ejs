@@ -1,0 +1,38 @@
+<%- include('./includes/head.ejs') %>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <%- include('./includes/nav.ejs') %>
+
+  <main>
+    <% if (prods.length > 0) { %>
+    <div class="row mx-auto" style="margin-top:5%;height: 85%; width: 85%;">
+      <% for (let product of prods) { %>
+      <article class="col-3 mx-auto" style="font-family: 'Open Sans Condensed', sans-serif;">
+        <header class="card__header my-4" style="text-align: center;">
+          <h5 class="product__title" style="text-align: center; font-size: 26px;"><%= product.title %></h5>
+        </header>
+        <div class="card__image">
+          <img style="width: 100%;" src="<%= product.imgURL %>" alt="<%= product.title %>">
+        </div>
+        <div class="card__content" style="text-align: center;">
+          <h5 style="padding-top: 5%;"><%= product.price %> BDT</h5>
+          <p class="product__description" style="font-size: 16px;"><%= product.des %></p>
+          <div class=" card__actions">
+            <% id = product._id.toString() %>
+            <a href="/books/<%= id %>" class="btn btn-info""> Details</a>
+
+          </div>
+        </div>
+      </article>
+      <% } %>  
+    </div>
+    <% } else { %>
+    <h1>No Products Found!</h1>
+    <% } %>
+
+  </main>   
+
+  <%- include('./includes/end.ejs') %>

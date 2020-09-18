@@ -19,6 +19,10 @@ router.post("/addBook", intrfc.postAddBook);
 router.get("/about", (req, res, next) => res.render("about"));
 
 router.get("/books/:bookID", ensureAuthenticated, intrfc.bookDetails);
+
+router.get("/search/:key", ensureAuthenticated, intrfc.getSearch);
+
+router.post("/search", ensureAuthenticated, intrfc.postSearch);
 // localhost/
 
 //edit book

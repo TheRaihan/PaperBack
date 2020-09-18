@@ -139,3 +139,24 @@ exports.bookDetails = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.getSearch = (req, res, next) => {
+  const regex = new RegExp(req.params.key, "i");
+  Product.find({ title: regex })
+    .then((products) => {
+      res.render("search", {
+        name: req.user.name,
+        userID: req.user._id,
+        prods: products,
+        id: "",
+        pageTitle: "Home",
+        path: "/index",
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.postSearch = (req, res, next) => {
+  const key = req.body.key;
+  res.redirect("/search/" + key);
+};
